@@ -10,10 +10,11 @@ Branch | Server | Comments
 `staging` | Staging | Don't commit directly to `staging`. Merge `release/x.x.x` to `staging` and test the changes.
 `develop` | Development | Feel free to deploy your `fix`/`feature` to `develop` and test the changes.
 `release/x.x.x` | To make a stable release | Use [semantic versioning](https://semver.org/). Create a new release branch from the previous `release/x.x.x` or `master`. Make sure to [tag](https://git-scm.com/book/en/v2/Git-Basics-Tagging) after release.
-`fix/issue_number` | To make a fix | Create a new branch from the `master` or latest `release/x.x.x`. Test on `develop` and make PR against upcoming release branch.
-`hotfix/issue_number` | To make a hotfix | Create a new branch from the `master`. Follow the project specific git flow to deploy it.
-`feature/issue_number` | To work on new feature | Create a new branch from the `master` or latest `release/x.x.x`. Test on `develop` and make PR against upcoming release branch.
-`feature/feature_name` | When you have sub issues | Make `feature/feature_name`as the main branch. And create PR against that branch from separate `issue/issue_number` branches.
+`upgrade/x.x.x` | To upgrade Concrete CMS | Treat upgrade/x.x.x as a release branch. Feel free to commit directly to this branch if a fix doesn't require review. However, if you believe the code needs a review, please create a separate branch and submit a PR against this branch.
+`fix/issue_number` | To make a fix | Create a new branch from the `master` or latest `release/x.x.x`. Test on `develop` and make PR against the upcoming release branch.
+`hotfix/issue_number` | To make a hotfix | Create a new branch from the `master`. Follow the project-specific git flow to deploy it.
+`feature/issue_number` | To work on new feature | Create a new branch from the `master` or latest `release/x.x.x`. Test on `develop` and make PR against the upcoming release branch.
+`feature/feature_name` | When you have sub issues | Make `feature/feature_name`as the main branch. Create a PR against that branch from separate `issue/issue_number` branches.
 
 
 For more, visit http://nvie.com/posts/a-successful-git-branching-model/
