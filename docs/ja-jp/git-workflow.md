@@ -1,94 +1,100 @@
 # Git Workflow
+## リポジトリの命名規則
 
-## Branching Rules
+プロジェクト間の一貫性を保つために、以下のリポジトリの命名規則に従います：
 
-Branch | Server | Comments
+1. リポジトリ名にはハイフンを単語の区切り文字として使用します。例えば、`project-deployer` のように `project_deployer` ではなく。
+2. 可能な限り、リポジトリ名を対応するバックログプロジェクト名と一致させます。これにより、明確さを保ち、混乱を避けることができます。
+
+これらのルールに従うことで、一貫性のある整理されたリポジトリの命名規則を確立することができます。
+
+
+## ブランチのルール
+
+ブランチ | サーバー | コメント
 ----- | ----- | ----
-`master` | Production | Don't commit directly to `master`. Make a PR from `release/x.x.x` to `master`.
-`staging` | Staging | Don't commit directly to `staging`. Merge `release/x.x.x` to `staging` and test the changes.
-`develop` | Development | Feel free to deploy your `fix`/`feature` to `develop` and test the changes.
-`release/x.x.x` | To make a stable release | Use [semantic versioning](https://semver.org/). Create a new release branch from the previous `release/x.x.x` or `master`. Make sure to [tag](https://git-scm.com/book/en/v2/Git-Basics-Tagging) after release.
-`hotfix/issue_number` | To make a hotfix | Create a new branch from the `master`. Follow the project specific git flow to deploy it.
-`feature/issue_number` | To work on new feature | Create a new branch from the `master` or latest `release/x.x.x`. Test on `develop` and make PR against upcoming release branch.
-`fix/issue_number` | To make a fix | Create a new branch from the `master` or latest `release/x.x.x`. Test on `develop` and make PR against upcoming release branch.
+`master` | 本番環境 | `master` に直接コミットしないでください。`release/x.x.x` から `master` へのPRを作成してください。
+`staging` | ステージング環境 | `staging` に直接コミットしないでください。`release/x.x.x` を `staging` にマージして変更をテストしてください。
+`develop` | 開発環境 | `fix`/`feature` を `develop` にデプロイして変更をテストしてください。
+`release/x.x.x` | 安定したリリースを作成するため | [セマンティックバージョニング](https://semver.org/)を使用してください。前の `release/x.x.x` または `master` から新しいリリースブランチを作成してください。リリース後に [タグ](https://git-scm.com/book/en/v2/Git-Basics-Tagging) を付けることを忘れないでください。
+`upgrade/x.x.x` | Concrete CMS のアップグレードに使用 | upgrade/x.x.x をリリースブランチとして扱ってください。修正がレビューを必要としない場合は、直接このブランチにコミットしてください。ただし、コードにレビューが必要な場合は、別のブランチを作成し、このブランチに対してPRを作成してください。
+`fix/issue_number` | 修正を行うため | `master` または最新の `release/x.x.x` から新しいブランチを作成してください。`develop` でテストし、次のリリースブランチに対してPRを作成してください。
+`hotfix/issue_number` | ホットフィックスを行うため | `master` から新しいブランチを作成してください。プロジェクト固有のgitフローに従ってデプロイしてください。
+`feature/issue_number` | 新機能の作業を行うため | `master` または最新の `release/x.x.x` から新しいブランチを作成してください。`develop` でテストし、次のリリースブランチに対してPRを作成してください。
+`feature/feature_name` | サブの課題がある場合 | `feature/feature_name` をメインブランチとして使用してください。別々の `issue/issue_number` ブランチからそのブランチに対してPRを作成してください。
 
-For more, visit http://nvie.com/posts/a-successful-git-branching-model/
-
-## Easy instruction
-
-- English: https://danielkummer.github.io/git-flow-cheatsheet/index.html
-- Japanese: https://danielkummer.github.io/git-flow-cheatsheet/index.ja_JP.html
-- Diagram: https://drive.google.com/file/d/1-hPG28qS4k5LLBh-rjCk_itzNv9zW0ys/view
+詳細は、http://nvie.com/posts/a-successful-git-branching-model/ を参照してください。
 
 
-## Overall Steps
+## 簡単な手順
 
-- Go to your local project directory `cd YOUR_PROJECT_DIR`
-- Checkout to the `master` branch `git checkout master`
-- Pull the latest changes from the `master` branch `git pull origin master`
-- Create a new branch for the feature you want to implement `git checkout -b feature/your-new-feature`
-- Add the changed files to the git `git add .`
-- Commit the changes to the git `git commit -m 'Your commit message'`
-- Push the commit to the git. [Make sure to specify the branch name otherwise it'll update all branches] `git push origin feature/your-new-feature`
-- Checkout to the develop branch `git checkout develop`
-- Pull the latest changes from the `develop` branch `git pull origin develop`
-- Merge your branch to the `develop` branch `git merge your-new-feature`
-- Push the merge commit to the `develop` branch. `git push origin develop`
-- Deploy the changes to the `develop` server.
-- Check your feature on the `develop` server.
-- If everything is alright, open a pull request against the new release branch. If the release isn't available to open against the `master` branch.
-- If it's not ok, then checkout again to your branch and do the above steps. Keep in mind, you don't need to recreate your feature branch as it already exists.
+- ローカルのプロジェクトディレクトリに移動します `cd YOUR_PROJECT_DIR`
+- `master` ブランチにチェックアウトします `git checkout master`
+- `master` ブランチから最新の変更を取得します `git pull origin master`
+- 実装したい機能のために新しいブランチを作成します `git checkout -b feature/your-new-feature`
+- 変更されたファイルを git に追加します `git add .`
+- 変更を git にコミットします `git commit -m 'Your commit message'`
+- コミットを git にプッシュします。[ブランチ名を指定することを忘れずに。そうしないとすべてのブランチが更新されます] `git push origin feature/your-new-feature`
+- `develop` ブランチにチェックアウトします `git checkout develop`
+- `develop` ブランチから最新の変更を取得します `git pull origin develop`
+- 自分のブランチを `develop` ブランチにマージします `git merge your-new-feature`
+- マージコミットを `develop` ブランチにプッシュします。`git push origin develop`
+- 変更を `develop` サーバーにデプロイします。
+- `develop` サーバーで機能を確認します。
+- 問題がなければ、新しいリリースブランチに対してプルリクエストを作成します。リリースが `master` ブランチに対して開けない場合は、そのリリースに対して開けます。
+- 問題がある場合は、再度自分のブランチにチェックアウトして上記の手順を行います。既に存在するため、機能ブランチを再作成する必要はありません。
 
 
-## Tips
+## ヒント
 
-- Diff everything before apply
-- Commit related changes
-- Commit often
-- Don't commit half done work
-- Test before you commit
-- **Write good commit message**
-- Try to avoid `git push`, and use `git push origin branch`
-- For more, visit  https://www.git-tower.com/learn/git/ebook/en/command-line/appendix/best-practices
+- 適用する前にすべての差分を確認してください
+- 関連する変更をコミットしてください
+- 頻繁にコミットしてください
+- 途中までの作業をコミットしないでください
+- コミットする前にテストしてください
+- **良いコミットメッセージを書いてください**
+- `git push` を避け、`git push origin branch` を使用してください
+- 詳細は、https://www.git-tower.com/learn/git/ebook/en/command-line/appendix/best-practices を参照してください。
 
-## Pull Request template
-Please use the following template to make a Pull Request.
+
+## プルリクエストのテンプレート
+プルリクエストを作成する際には、以下のテンプレートを使用してください。
 
 ```
-## Description
+## 説明
 
-Please include a summary of the change and which issue is fixed. List any dependencies that are required for this change.
+変更の概要と、どの問題が修正されたかを含めてください。この変更に必要な依存関係をリストアップしてください。
 
 Fixes # BACKLOG_ISSUE_KEY
 
-## Type of change
+## 変更の種類
 
-- [ ] Bug fix (non-breaking change which fixes an issue)
-- [ ] New feature (non-breaking change which adds functionality)
-- [ ] Breaking change (fix or feature that would cause existing functionality to not work as expected)
+- [ ] バグ修正（問題を修正する非破壊的な変更）
+- [ ] 新機能（機能を追加する非破壊的な変更）
+- [ ] 破壊的な変更（既存の機能が正常に動作しなくなる修正または機能）
 
-## How Has This Been Tested?
+## どのようにテストされましたか？
 
-Please describe the tests that you ran to verify your changes. Provide instructions, so we can reproduce. Please also list any relevant details for your test configuration
+変更を検証するために実行したテストについて説明してください。再現できるように手順を提供してください。テスト構成の詳細もリストアップしてください。
 
-- [ ] Test A
-- [ ] Test B
+- [ ] テスト A
+- [ ] テスト B
 
-## Checklist:
+## チェックリスト：
 
-- [ ] My code follows the style guidelines of this project
-- [ ] I have performed a self-review of my own code
-- [ ] I have commented on my code, particularly in hard-to-understand areas
-- [ ] I have made corresponding changes to the documentation/README.md/CHANGELOG.md
-- [ ] I have checked my code and corrected any misspellings
+- [ ] コードがこのプロジェクトのスタイルガイドに従っている
+- [ ] 自分自身のコードを自己レビューした
+- [ ] コードにコメントを追加し、特に理解しにくい箇所にコメントを付けた
+- [ ] ドキュメント/README.md/CHANGELOG.md に対応する変更を行った
+- [ ] コードをチェックし、スペルミスを修正した
 ```
 
 
-## References
+## 参考文献
 
-- https://blog.hartleybrody.com/git-small-teams/ (I like this tips)
-- https://stackoverflow.com/questions/24582319/branching-and-merging-best-practices-in-git (Here in all answers have some information, but the accepted one could be our summary)
-- https://www.git-tower.com/learn/git/ebook/en/command-line/appendix/best-practices (Similar tips but good one)
-- https://gist.github.com/pandeiro/1552496 (Informative, what should we do, what should not to do)
-- https://docs.gitlab.com/ee/workflow/gitlab_flow.html (May get some ideas)
-- https://www.atlassian.com/git/tutorials/comparing-workflows (For details. A very good representation of different workflows)
+- https://blog.hartleybrody.com/git-small-teams/ (このヒントが好きです)
+- https://stackoverflow.com/questions/24582319/branching-and-merging-best-practices-in-git (ここにはすべての回答に情報がありますが、受け入れられた回答が要約になるかもしれません)
+- https://www.git-tower.com/learn/git/ebook/en/command-line/appendix/best-practices (似たようなヒントですが、良いものです)
+- https://gist.github.com/pandeiro/1552496 (情報があり、何をすべきか、何をしないかがわかります)
+- https://docs.gitlab.com/ee/workflow/gitlab_flow.html (アイデアを得るかもしれません)
+- https://www.atlassian.com/git/tutorials/comparing-workflows (詳細について。さまざまなワークフローの非常に良い表現です)

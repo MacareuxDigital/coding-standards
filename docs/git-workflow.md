@@ -2,6 +2,16 @@
 
 ![Git Wokflow](_media/git-workflow.png)
 
+## Repository Naming Rules
+
+To maintain consistency across projects, we follow the following repository naming rules:
+
+1. Use hyphens as the word separator in repository names. For example, `project-deployer` instead of `project_deployer`.
+2. Ensure that the repository name matches the corresponding backlog project name whenever possible. This helps in maintaining clarity and avoiding confusion.
+
+By adhering to these rules, we can establish a consistent and organized naming convention for our repositories.
+
+
 ## Branching Rules
 
 Branch | Server | Comments
