@@ -16,7 +16,7 @@ Check their [official documentation](https://cs.symfony.com/) to integrate with 
 
 ### 👉ヒントとコツ
 
-- Writing [Clean Code In PHP](https://stackcoder.in/posts/writing-clean-code-in-php).
+- Writing [Clean Code In PHP](https://github.com/jupeter/clean-code-php).
 - [PHP 8 tricks](https://latteandcode.medium.com/php-8-tricks-that-will-help-you-write-cleaner-code-374c71daffb6) that will help you write cleaner code.
 
 ## Package development
