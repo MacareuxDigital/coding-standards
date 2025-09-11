@@ -2,20 +2,20 @@
 
 ## Coding Standard Documentations
 
-### [Concrete5 Developers Documentation](https://documentation.concrete5.org/developers)
-A practical guide on creating websites from beginning to end with concrete5.
+### [Concrete CMS Developers Documentation](https://documentation.concretecms.org/developers)
+A practical guide on creating websites from beginning to end with Concrete CMS.
 
 
-### [Concrete5 CheatSheet](https://github.com/shahroq/whale_c5_cheat_sheet)
-This is a collection of concrete5 cheat sheets, based on the C5 V8+ source code.
+### [Concrete CMS CheatSheet](https://github.com/shahroq/whale_c5_cheat_sheet)
+This is a collection of Concrete CMS cheat sheets, based on the C5 V8+ source code.
 
 
-### [Concrete5 CheatSheet (webli)](https://www.webli.us/cheatsheet/doku.php)
+### [Concrete CMS CheatSheet (webli)](https://www.webli.us/cheatsheet/doku.php)
 It's another cheatsheet with nice representation you may want to follow.
 
 
 ### [PHP Standards Recommendations](https://www.php-fig.org/psr/)
-concrete5 follows the PHP Framework Interoperability Group's PSR guidelines for code style.
+Concrete CMS follows the PHP Framework Interoperability Group's PSR guidelines for code style.
 For version 7 and version 8 follow [PSR-1](http://www.php-fig.org/psr/psr-1/) [PSR-2](http://www.php-fig.org/psr/psr-2/) For version 9 and above follow [PSR-1](http://www.php-fig.org/psr/psr-1/) [PSR-12](http://www.php-fig.org/psr/psr-12/)
 
 

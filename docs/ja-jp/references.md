@@ -2,20 +2,20 @@
 
 ## 符号化標準文書
 
-### [Concrete5 Developers Documentation](https://documentation.concrete5.org/developers)
-concrete5を使って最初から最後までWebサイトを作るための実践的なガイドです。
+### [Concrete CMS Developers Documentation](https://documentation.concretecms.org/developers)
+Concrete CMSを使って最初から最後までWebサイトを作るための実践的なガイドです。
 
 
-### [Concrete5 CheatSheet](https://github.com/shahroq/whale_c5_cheat_sheet)
-これは、C5 V8+のソースコードに基づいたconcrete5のチートシート集です。
+### [Concrete CMS CheatSheet](https://github.com/shahroq/whale_c5_cheat_sheet)
+これは、C5 V8+のソースコードに基づいたConcrete CMSのチートシート集です。
 
 
-### [Concrete5 CheatSheet (webli)](https://www.webli.us/cheatsheet/doku.php)
+### [Concrete CMS CheatSheet (webli)](https://www.webli.us/cheatsheet/doku.php)
 これは、あなたがフォローしたいと思う素敵な表現を持つ別のチートシートです。
 
 
 ### [PHP Standards Recommendations](https://www.php-fig.org/psr/)
-concrete5 は、PHP Framework Interoperability Group の PSR ガイドラインに沿ったコードスタイルを採用しています。
+Concrete CMS は、PHP Framework Interoperability Group の PSR ガイドラインに沿ったコードスタイルを採用しています。
 For version 7 and version 8 follow [PSR-1](http://www.php-fig.org/psr/psr-1/) [PSR-2](http://www.php-fig.org/psr/psr-2/) For version 9 and above follow [PSR-1](http://www.php-fig.org/psr/psr-1/) [PSR-12](http://www.php-fig.org/psr/psr-12/)
 
 
